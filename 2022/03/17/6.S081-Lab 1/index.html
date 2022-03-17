@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="6.S081-Lab 11.Sleep(Easy)感想：这是系列实验lab1的第一个小部分。内容不难，但是有一些小细节卡住，所以做的也不算轻松迅速。 知识点： 1.#include头文件的顺序影响链接结果，不合理的头文件可能会导致链接失败。 2.Makefile错误的斜杠导致奇怪的错误 3.int main(int argc, char[] argv)    argc &#x3D; 传参 + 1， agrv">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2022/03/17/6.S081-Lab%201/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="6.S081-Lab 11.Sleep(Easy)感想：这是系列实验lab1的第一个小部分。内容不难，但是有一些小细节卡住，所以做的也不算轻松迅速。 知识点： 1.#include头文件的顺序影响链接结果，不合理的头文件可能会导致链接失败。 2.Makefile错误的斜杠导致奇怪的错误 3.int main(int argc, char[] argv)    argc &#x3D; 传参 + 1， agrv">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-17T13:10:27.088Z">
+<meta property="article:modified_time" content="2022-03-17T13:10:27.088Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,127 +154,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-6.S081-Lab 1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="6-S081-Lab-1"><a href="#6-S081-Lab-1" class="headerlink" title="6.S081-Lab 1"></a>6.S081-Lab 1</h1><h3 id="1-Sleep-Easy"><a href="#1-Sleep-Easy" class="headerlink" title="1.Sleep(Easy)"></a>1.Sleep(Easy)</h3><p>感想：这是系列实验lab1的第一个小部分。内容不难，但是有一些小细节卡住，所以做的也不算轻松迅速。</p>
+<p>知识点：</p>
+<p>1.#include头文件的顺序影响链接结果，不合理的头文件可能会导致链接失败。</p>
+<p>2.Makefile错误的斜杠导致奇怪的错误</p>
+<p>3.int main(int argc, char[] argv)    argc = 传参 + 1， agrv[0] = 程序地址</p>
+<p>4.程序错误退出时记得写exit(1);</p>
+<h3 id="2-PingPong-Easy"><a href="#2-PingPong-Easy" class="headerlink" title="2.PingPong(Easy)"></a>2.PingPong(Easy)</h3><p>感想:同样没什么难度，主要是系统调用的一些用法。</p>
+<p>知识点:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.int pipe(int fd[2]);</span><br><span class="line">	用来创建管道的函数，创建失败时返回-1.其中fd参数是大小为2的数组类型的指针，fd[0]与fd[1]分别构成管道的两端，往 fd[1] 写入的数据可以从 fd[0] 读出。并且 fd[1] 一端只能进行写操作，fd[0] 一端只能进行读操作，不能反过来使用。要实现双向数据传输，可以使用两个管道。</span><br><span class="line">2.int pid = fork();</span><br><span class="line">	一个进程，包括代码、数据和分配给进程的资源。fork（）函数通过系统调用创建一个与原来进程几乎完全相同的进程，也就是两个进程可以做完全相同的事，但如果初始参数或者传入的变量不同，两个进程也可以做不同的事。</span><br><span class="line">    一个进程调用fork（）函数后，系统先给新的进程分配资源，例如存储数据和代码的空间。然后把原来的进程的所有值都复制到新的新进程中，只有少数值与原来的进程的值不同。相当于克隆了一个自己。</span><br><span class="line">	  在语句fpid=fork()之前，只有一个进程在执行这段代码，但在这条语句之后，就变成两个进程在执行了，这两个进程的几乎完全相同，将要执行的下一条语句都是if(fpid&lt;0)……</span><br><span class="line">    为什么两个进程的fpid不同呢，这与fork函数的特性有关。fork调用的一个奇妙之处就是它仅仅被调用一次，却能够返回两次，它可能有三种不同的返回值：</span><br><span class="line">    1）在父进程中，fork返回新创建子进程的进程ID；</span><br><span class="line">    2）在子进程中，fork返回0；</span><br><span class="line">    3）如果出现错误，fork返回一个负值；</span><br><span class="line">    在fork函数执行完毕后，如果创建新进程成功，则出现两个进程，一个是子进程，一个是父进程。在子进程中，fork函数返回0，在父进程中，fork返回新创建子进程的进程ID。我们可以通过fork返回的值来判断当前进程是子进程还是父进程。</span><br><span class="line">    引用一位网友的话来解释fpid的值为什么在父子进程中不同。“其实就相当于链表，进程形成了链表，父进程的fpid(p 意味point)指向子进程的进程id, 因为子进程没有子进程，所以其fpid为0.</span><br><span class="line">3.int byte = write(fd[1]/文件描述符, 传输的数据， 数据大小) 返回值为成功传输数据的大小</span><br><span class="line">  int byte = read(fd[0]/文件描述符, 传输的数据， 数据大小) 返回值为成功传输数据的大小	</span><br><span class="line">4. getpid()返回当前进程的进程号</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/17/CSAPP%20-%20%E9%93%BE%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2022-03-17T13:10:38.228Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/17/6.S081-Lab%201/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/17/6.S081-Lab%201/" class="archive-article-date">
-  	<time datetime="2022-03-17T13:10:27.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/15/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E7%9A%84%E5%A4%A7%E6%9D%82%E7%83%A9/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:51:34.605Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2022/03/17/CSAPP%20-%20%E9%93%BE%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/15/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E7%9A%84%E5%A4%A7%E6%9D%82%E7%83%A9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:51:23.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2022-03-14T13:04:45.316Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -293,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

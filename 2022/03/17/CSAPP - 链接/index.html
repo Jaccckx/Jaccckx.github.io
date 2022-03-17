@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="CSAPP - 链接​        链接，是程序运行中非常重要的概念。链接会帮助我们认识到一个程序代码是如何从代码文件一步步翻译，最终运行在电脑上的。 一.前缀铺垫​        在一切开始之前，我们先做一点前缀知识的铺垫，我们将讲述程序代码到最终执行程序的四个阶段。这里我们以C语言代码为例。  第一个阶段 : 编译预处理阶段，在这一阶段由C预处理器（cpp）负责，以.c结尾的代码文件将会被翻">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2022/03/17/CSAPP%20-%20%E9%93%BE%E6%8E%A5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CSAPP - 链接​        链接，是程序运行中非常重要的概念。链接会帮助我们认识到一个程序代码是如何从代码文件一步步翻译，最终运行在电脑上的。 一.前缀铺垫​        在一切开始之前，我们先做一点前缀知识的铺垫，我们将讲述程序代码到最终执行程序的四个阶段。这里我们以C语言代码为例。  第一个阶段 : 编译预处理阶段，在这一阶段由C预处理器（cpp）负责，以.c结尾的代码文件将会被翻">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317182339552.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317182301541.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317191837105.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317200819906.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317161158841.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317203127513.png">
+<meta property="og:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317164245891.png">
+<meta property="article:published_time" content="2022-03-17T13:10:38.228Z">
+<meta property="article:modified_time" content="2022-03-17T13:10:44.380Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/home/xuhao/.config/Typora/typora-user-images/image-20220317182339552.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,127 +162,221 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CSAPP - 链接" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSAPP-链接"><a href="#CSAPP-链接" class="headerlink" title="CSAPP - 链接"></a>CSAPP - 链接</h1><p>​        链接，是程序运行中非常重要的概念。链接会帮助我们认识到一个程序代码是如何从代码文件一步步翻译，最终运行在电脑上的。</p>
+<h3 id="一-前缀铺垫"><a href="#一-前缀铺垫" class="headerlink" title="一.前缀铺垫"></a>一.前缀铺垫</h3><p>​        在一切开始之前，我们先做一点前缀知识的铺垫，我们将讲述程序代码到最终执行程序的四个阶段。这里我们以C语言代码为例。</p>
+<ul>
+<li><p>第一个阶段 : 编译预处理阶段，在这一阶段由C预处理器（cpp）负责，以.c结尾的代码文件将会被翻译成ASCII码的以.i结尾的中间文件。这个阶段代码发生的变化主要为。</p>
+<ul>
+<li><p>文件包括，处理#include开头的语句</p>
+</li>
+<li><p>宏定义的替换与条件编译的删除</p>
+<p>我们来看一个代码的例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.c</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> uint unsigned int</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    uint n = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;number is %d\n&quot;</span>, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们在Linux系统上输入编译预处理命令，并查看文件。（gcc -E -o a.i a.c）</p>
+<p><img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317182339552.png" alt="image-20220317182339552"></p>
+<p>&lt;img src=”/home/xuhao/.config/Typora/typora-user-images/image-20220317181958969.png” alt=”image-20220317181958969” style=”zoom:50%;” /</p>
+<p><img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317182301541.png" alt="image-20220317182301541">    这里我们观察到</p>
+<ul>
+<li><p>在代码的头部添加了行号和文件名标识，比如# 1 “a.c”，以便于编译时编译器产生调试用的行号信息及用于编译时产生编译错误或警告时能够显示行号</p>
+</li>
+<li><p>代码变得非常臃肿。这是因为文件包括include了“stdio.h“内的大量内容</p>
+</li>
+<li><p>发生了宏替换。“ uint x = 10; “ 被改成 “unsigned int x = 10;”</p>
+<blockquote>
+<p>注意：#include头文件的顺序在许多时候是受限的。假设有头文件”a.c”, “b.c”。如果”b.c”引用了”a.c”的内容，那么”b.c”头文件必须严格放置在”a.c”后。这是因为在头文件包含时是按照头文件书写顺序来的，否则将会出现编译错误。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第二个阶段 : 编译阶段。这一阶段由C编译器(cc1)负责，将进行大量的代码优化，将以.i结尾的ANSCII码文件翻译成.s结尾的ASCII码文件。</p>
+<ul>
+<li>同样将上述文件gcc -S -o a.s a.c，明显能观察到代码简单了许多</li>
+</ul>
+</li>
+</ul>
+<p>​                <img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317191837105.png" alt="image-20220317191837105"></p>
+<ul>
+<li>第三个阶段是汇编阶段，即由汇编器(as)将.S结尾的ANSCII文件翻译成.o结尾的二进制可重定位文件。</li>
+<li>第四个阶段是链接阶段，即由链接器(ld)将几个.o结尾的二进制可重定位文件链接成.out结尾的二进制目标文件。</li>
+</ul>
+<p>​        但是我们不免产生疑惑，为什么要在最后一阶段将几个可重定位文件链接而不是在一开始将所以代码合并写在一起,链接的阶段发生了什么,这种做的好处是什么呢？</p>
+<h2 id="二-链接的作用"><a href="#二-链接的作用" class="headerlink" title="二.链接的作用"></a>二.链接的作用</h2><p>​        首先，我们提出链接的概念，什么是链接？链接是指将各种代码和数据片段收集并组合成为一个单一文件的过程。这个文件被叫做<strong>可执行目标文件</strong>。链接的过程可以发生在三个阶段，第一个阶段<strong>链接</strong>阶段，是程序从可重定位文件翻译成可执行目标时，属于<strong>静态链接</strong>的范围。第二个阶段发生在<strong>加载</strong>阶段，即可执行目标文件被<strong>加载器</strong>加载到内存的时候。第三个阶段发生在<strong>运行</strong>阶段，由应用程序来执行。第二三个阶段，都属于<strong>动态链接</strong>的范围。</p>
+<p>​        链接器的重要作用是，使得<strong>分离编译</strong>成为可能。我们不必将源程序组成为一个巨大的源文件，而是分解成更小，更好维护管理的模块。在当部分模块需要修改时，不必重新编译整个文件，只需重新编译部分模块，然后整体链接即可。</p>
+<h2 id="三-目标文件"><a href="#三-目标文件" class="headerlink" title="三.目标文件"></a>三.目标文件</h2><p>​        目标文件是指编译器编译后形成的目标文件。从结构上来讲，目标文件是已经编译后的可执行文件，只是还没有经过链接的过程，其中有些符号或有些地址还没有被调整。</p>
+<p>​        目标文件分为如下三种，它们虽然格式不同，但统称为ELF文件，结构类似。</p>
+<ul>
+<li>可重定位目标文件(.o)</li>
+<li>可执行目标文件(.out)</li>
+<li>共享目标文件(.so)</li>
+</ul>
+<p>​        它们的结构大抵如下。</p>
+<p><img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317200819906.png" alt="image-20220317200819906"></p>
+<ul>
+<li><p>ELF头以一个16字节的序列开始，这个序列描述了生成该文件的系统的字的大小和字节顺序。</p>
+<p>ELF剩下的部分包含ELF头大小，目标文件的类型等。</p>
+</li>
+<li><p>.text为已编译的机器代码，如下图</p>
+<img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317161158841.png" alt="image-20220317161158841" style="zoom:50%;" /></li>
+<li><p>.rodata存放的是只读数据，一般是程序里面的只读变量和字符串变量。单独设立”.rodata”段有很多好吃，不光是在语义上支持了c++的const关键字，而且操作系统在加载的时候可以将”.rodata”段的属性映射成只读，保证了程序的安全性</p>
+</li>
+<li><p>‘.data’段存放已初始化的全局和静态C变量，’.bss段’存放未初始化静态C变量，’.COMMON段’存放未初始化的全局变量</p>
+</li>
+<li><p>‘.symtab’符号表用来存储程序中定义和引用的全局变量的信息。.symtab节中包含ELF符号表，这张符号表包含一个数组。数组结构如下，objdump反汇编结果图二。</p>
+<p><img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317203127513.png" alt="image-20220317203127513"></p>
+</li>
+</ul>
+<p><img src="/home/xuhao/.config/Typora/typora-user-images/image-20220317164245891.png" alt="image-20220317164245891"></p>
+<ul>
+<li>.rel.text与.rel.data.当链接器把目标文件与其他文件链接时，代码数据可能需要重定位，信息记录于此</li>
+<li>.debug主要记录本地变量信息</li>
+</ul>
+<h2 id="三-符号-与-符号解析"><a href="#三-符号-与-符号解析" class="headerlink" title="三 符号 与 符号解析"></a>三 符号 与 符号解析</h2><pre><code>1. 符号主要分为三种，全局符号（本地定义且能为其他文件所用），外部符号（使用定义在其他文件的符号），本地符号（本地定义只用于本地使用）。
+1. 符号解析在解析多处定义的全局符号时，遵循以下原则
+</code></pre>
+<ul>
+<li>不许有多个强符号</li>
+<li>如果有多个弱符号，一个强符号选择强符号</li>
+<li>多个弱符号，随机选择弱符号</li>
+</ul>
+<p>​    3.链接器如何使用静态库来解析引用</p>
+<p>​    </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/17/CSAPP%20-%20%E9%93%BE%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2022-03-17T13:10:38.228Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/17/CSAPP%20-%20%E9%93%BE%E6%8E%A5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/17/6.S081-Lab%201/" class="archive-article-date">
-  	<time datetime="2022-03-17T13:10:27.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/15/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E7%9A%84%E5%A4%A7%E6%9D%82%E7%83%A9/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:51:34.605Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/17/6.S081-Lab%201/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-03-15T09:51:23.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-15</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2022-03-14T13:04:45.316Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -293,8 +399,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
